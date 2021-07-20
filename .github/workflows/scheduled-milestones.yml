@@ -1,0 +1,22 @@
+on:
+  schedule:
+    - cron: '0 0 * * SUN' # Run every Sunday at midnight
+
+jobs:
+  create_milestones_job:
+    runs-on: ubuntu-latest
+    name: Test Scheduled Milestones
+    steps:
+      - name: Checkout # To use as private action, you must check out the repository
+        uses: actions/checkout@v2
+      - name: Install
+        run: npm ci
+      - name: Schedule Milestones
+        uses: ./ # Use the action in the root directory
+        id: milestoneSchedule
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: Up for Review
+          schedule: 7
+          time_between: 9
+          date_options: '{"month": "long", "day": "numeric"}'
