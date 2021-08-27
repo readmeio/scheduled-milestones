@@ -1,3 +1,7 @@
+name: CI
+
+on: [push]
+
 jobs:
   create_milestones_job:
     runs-on: ubuntu-latest
