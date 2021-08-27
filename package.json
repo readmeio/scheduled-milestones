@@ -1,24 +1,33 @@
 {
-  "name": "milestone-test",
+  "name": "scheduled-milestones",
   "version": "1.0.0",
-  "description": "Building and testing a GitHub action to auto-open milestones on a schedule.",
+  "description": "A GitHub action to auto-create milestones on a schedule.",
   "main": "index.js",
+  "license": "ISC",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "ncc build index.js",
+    "lint": "eslint .",
+    "prettier": "prettier --list-different --write \"./**/**.js\"",
+    "watch": "ncc build --watch index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rafegoldberg/auto-gh-ms-test.git"
+    "url": "git+https://github.com/readmeio/scheduled-milestones.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rafegoldberg/auto-gh-ms-test/issues"
+    "url": "https://github.com/readmeio/scheduled-milestones/issues"
   },
-  "homepage": "https://github.com/rafegoldberg/auto-gh-ms-test#readme",
+  "homepage": "https://github.com/readmeio/scheduled-milestones#readme",
   "dependencies": {
     "@actions/core": "^1.4.0",
-    "@actions/github": "^5.0.0"
-  }
+    "@actions/github": "^5.0.0",
+    "date-fns": "^2.23.0"
+  },
+  "devDependencies": {
+    "@readme/eslint-config": "^6.0.0",
+    "@vercel/ncc": "^0.29.2",
+    "eslint": "^7.32.0",
+    "prettier": "^2.3.2"
+  },
+  "prettier": "@readme/eslint-config/prettier"
 }

@@ -9,14 +9,15 @@ jobs:
     steps:
       - name: Checkout # To use as private action, you must check out the repository
         uses: actions/checkout@v2
-      - name: Install
-        run: npm ci
+
       - name: Schedule Milestones
         uses: ./ # Use the action in the root directory
-        id: milestoneSchedule
+        id: scheduled
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           title: Up for Review
-          schedule: 7
-          time_between: 9
+          days: Tuesday,Thursday
           date_options: '{"month": "long", "day": "numeric"}'
+
+      - name: Created Milestones
+        run: echo ${{ steps.scheduled.outputs.milestones }}

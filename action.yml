@@ -1,30 +1,29 @@
 name: Scheduled Milestones
-description: Automatically open GitHub milestones.
+description: Automatically create GitHub milestones on a schedule.
 
 inputs:
   token:
-    description: Authentication token for GitHub
+    description: GitHub authentication token
     required: true
   title:
-    description: Name your scheduled milestones...
+    description: A prefix for your scheduled milestone title.
     required: true
     default: Up for Review
-  time_between:
-    description: Number of days between creation of milestone and due date 
+  days:
+    description: A comma-separated list of the days of the upcoming week that you want milestones for.
     required: true
-    default: 7
   date_options:
-    description: Options for toLocaleDateString https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString
+    description: Options for `Date.toLocaleDateString()`. See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString for details.
     required: false
-  schedule:
-    description: Create a new milestone every... (in days)
-    required: true
-    default: 7
+
+outputs:
+  milestones:
+    description: 'The URLs of the newly created milestones (if any were created)'
 
 runs:
   using: node12
-  main: index.js
+  main: dist/index.js
 
 branding:
   icon: calendar
-  color: gray-dark
+  color: blue
