@@ -7,8 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Test Scheduled Milestones
     steps:
-      - name: Checkout # To use as private action, you must check out the repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
       - name: Schedule Milestones
         uses: ./ # Use the action in the root directory
