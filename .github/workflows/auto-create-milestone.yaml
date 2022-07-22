@@ -1,0 +1,21 @@
+name: auto-create-milestone
+
+on: [push]
+
+jobs:
+  auto-create-milestone:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: run
+        uses: ./
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: d-
+          days: Friday
+          count: 4
+          format: YYYY.MM.DD
+
+      - name: result
+        run: echo ${{ steps.run.outputs.milestones }}
