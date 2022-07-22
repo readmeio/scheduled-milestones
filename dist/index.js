@@ -36315,7 +36315,7 @@ async function run() {
 
   const baseTitle = core.getInput('title');
   const days = core.getInput('days').split(',');
-  const dateOpts = core.getInput('date_options') || JSON.parse(core.getInput('date_options'));
+  const dateOpts = core.getInput('date_options') && JSON.parse(core.getInput('date_options'));
 
   const count = core.getInput('count');
   const format = core.getInput('format');
@@ -36335,7 +36335,7 @@ async function run() {
           if (dateOpts) {
             title += ` (${date.toLocaleDateString(undefined, dateOpts)})`;
           } else {
-            title += moment(date, format);
+            title += moment(date).format(format);
           }
 
           octokit.rest.issues
