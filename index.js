@@ -41,7 +41,7 @@ async function run() {
           if (dateOpts) {
             title += ` (${date.toLocaleDateString(undefined, dateOpts)})`;
           } else {
-            title += moment(date, format);
+            title += moment(date).format(format);
           }
 
           octokit.rest.issues
