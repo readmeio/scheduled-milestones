@@ -21,16 +21,15 @@ async function run() {
 
   const baseTitle = core.getInput('title');
   const days = core.getInput('days').split(',');
-  const dateOpts = core.getInput('date_options') || JSON.parse(core.getInput('date_options'));
+  const dateOpts = core.getInput('date_options') && JSON.parse(core.getInput('date_options'));
 
   const count = core.getInput('count');
   const format = core.getInput('format');
 
   const promises = [];
 
-  let d = new Date();
   for (let i = 0; i < count; i += 1) {
-    d = addDate(d, WEEK);
+    const d = addDate(new Date(), WEEK * i);
 
     days.forEach(day => {
       promises.push(
@@ -41,7 +40,7 @@ async function run() {
           if (dateOpts) {
             title += ` (${date.toLocaleDateString(undefined, dateOpts)})`;
           } else {
-            title += moment(date, format);
+            title += moment(date).format(format);
           }
 
           octokit.rest.issues

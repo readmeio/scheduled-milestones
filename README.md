@@ -65,7 +65,7 @@ name: Weekly Milestones
 
 on:
   schedule:
-    - cron: '0 0 * * SUN' # Run every Sunday at midnight
+    - cron: 0 0 * * SUN # Run every Sunday at midnight
 
 jobs:
   generate:
@@ -80,7 +80,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           title: Up for Review
           days: Tuesday,Thursday
-          date_options: '{"month": "long", "day": "numeric"}'
+          date_options: {"month": "long", "day": "numeric"}
 
       - name: Created Milestones
         run: echo ${{ steps.scheduled.outputs.milestones }}
@@ -91,7 +91,7 @@ name: auto-create-milestone
 
 on:
   schedule:
-    - cron: '0 0 * * SAT'
+    - cron: 0 0 * * SAT
 
 jobs:
   generate:
