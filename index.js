@@ -28,9 +28,8 @@ async function run() {
 
   const promises = [];
 
-  let d = new Date();
   for (let i = 0; i < count; i += 1) {
-    d = addDate(d, WEEK);
+    const d = addDate(new Date(), WEEK * i);
 
     days.forEach(day => {
       promises.push(
