@@ -34,6 +34,24 @@ Note: If you do not configure this, the default format for dates in in your mile
 * *Required*: `Yes`
 * *Type*: `string`
 
+### count
+
+Future week count.
+
+Note: 4.
+
+* *Required*: `No`
+* *Type*: `number`
+
+### format
+
+Date format.
+
+Note: `YYYY.MM.DD`.
+
+* *Required*: `No`
+* *Type*: `string`
+
 ## Output
 
 ### milestones
@@ -44,6 +62,7 @@ If any milestones were created, this will contain an array of their URLs.
 
 ```yaml
 name: Weekly Milestones
+
 on:
   schedule:
     - cron: '0 0 * * SUN' # Run every Sunday at midnight
@@ -65,4 +84,31 @@ jobs:
 
       - name: Created Milestones
         run: echo ${{ steps.scheduled.outputs.milestones }}
+```
+
+```yaml
+name: auto-create-milestone
+
+on:
+  schedule:
+    - cron: '0 0 * * SAT'
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: run
+        uses: readmeio/scheduled-milestones@v1.1
+        id: run
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: d-
+          days: Friday
+          count: 4
+          format: YYYY.MM.DD
+
+      - name: result
+        run: echo ${{ steps.run.outputs.milestones }}
 ```

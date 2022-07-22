@@ -15,6 +15,13 @@ inputs:
   date_options:
     description: Options for `Date.toLocaleDateString()`. See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString for details.
     required: false
+  count:
+    description: Future week count. `4`
+    required: false
+    default: 1
+  format:
+    description: Date format. `YYYY.MM.DD`
+    required: false
 
 outputs:
   milestones:
