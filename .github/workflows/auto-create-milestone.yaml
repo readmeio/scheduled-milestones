@@ -8,8 +8,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: run
-        uses: ./
+      - uses: ./
+        id: run
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           title: d-
@@ -17,5 +17,5 @@ jobs:
           count: 4
           format: YYYY.MM.DD
 
-      - name: result
+      - name: echo
         run: echo ${{ steps.run.outputs.milestones }}
