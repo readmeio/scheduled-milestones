@@ -17,5 +17,5 @@ jobs:
           count: 4
           format: YYYY.MM.DD
 
-      - name: echo
+      - name: result
         run: echo ${{ steps.run.outputs.milestones }}
