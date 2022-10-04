@@ -2,7 +2,7 @@
 
 A GitHub action that can auto-create weekly milestones.
 
-The folks at [ReadMe](https://readme.com/) utilize this to internally organize our weekly releases.
+The folks at [ReadMe](https://readme.com/) utilized this to internally organize our weekly releases.
 
 This action is similar to [github-action-milestone-schedule](https://github.com/MrGossett/github-action-milestone-schedule) but offers some friendlier configuration options.
 
