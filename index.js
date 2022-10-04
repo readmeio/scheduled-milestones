@@ -1,5 +1,5 @@
-const github = require('@actions/github');
 const core = require('@actions/core');
+const github = require('@actions/github');
 const datefns = require('date-fns');
 const moment = require('moment');
 
