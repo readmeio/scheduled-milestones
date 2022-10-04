@@ -99,8 +99,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: run
-        uses: readmeio/scheduled-milestones@v1.1
+      - uses: readmeio/scheduled-milestones@v1.1
         id: run
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
