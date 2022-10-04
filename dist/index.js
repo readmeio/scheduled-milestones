@@ -36324,6 +36324,9 @@ async function run() {
 
   for (let i = 0; i < count; i += 1) {
     const d = addDate(new Date(), WEEK * i);
+    d.setHours(23);
+    d.setMinutes(59);
+    d.setSeconds(59);
 
     days.forEach(day => {
       promises.push(
