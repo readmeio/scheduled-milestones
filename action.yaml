@@ -28,7 +28,7 @@ outputs:
     description: 'The URLs of the newly created milestones (if any were created)'
 
 runs:
-  using: node12
+  using: node16
   main: dist/index.js
 
 branding:
